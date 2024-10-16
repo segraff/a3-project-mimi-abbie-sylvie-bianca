@@ -15,10 +15,10 @@ def get_mins(footy: Tuple[str, str, int, int, int]) -> int:
     return footy[2] 
 
 
-def get_goals(footy: Tuple[str, str, int, int, int]) -> List[str]:
+def get_goals(footy: Tuple[str, str, int, int, int]) -> int:
     return footy[3] 
 
-def get_assists(footy: Tuple[str, str, int, int, int]) -> List[str]:
+def get_assists(footy: Tuple[str, str, int, int, int]) -> int:
     return footy[4]
 
 
