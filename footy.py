@@ -1,4 +1,3 @@
-
 from footy_data import footy_db
 from match import match
 from typing import List, Tuple, Callable, Any
@@ -24,11 +23,13 @@ def get_assists(footy: Tuple[str, str, int, int, int]) -> int:
 
 
 def players_by_team(matches: List[str]) -> List[str]:
-    team = (matches[0])
+    team = str(matches[0])
     result = []
     for footy in footy_db:
+        print(footy)
         if get_team(footy) == team:
-            result.append(get_team(footy))
+            print("match")
+            # result.append(get_team(footy))
     return result
 
 def player_by_goal_range(matches: List[str]) -> List[str]:
@@ -49,16 +50,8 @@ def bye_action(dummy: List[str]) -> None:
 # pattern and action It must be declared here, after all of the function definitions
 pa_list: List[Tuple[List[str], Callable[[List[str]], List[Any]]]] = [
     (str.split("what players play on _"), players_by_team),
-    (str.split("what players scored goals between _ and _"), player_by_goal_range),
-    # (str.split("what movies were made before _"), title_before_year),
-    # (str.split("what movies were made after _"), title_after_year),
-    # (str.split("who directed %"), director_by_title),
-    # (str.split("who was the director of %"), director_by_title),
-    # (str.split("what movies were directed by %"), title_by_director),
-    # (str.split("who acted in %"), actors_by_title),
-    # (str.split("when was % made"), year_by_title),
-    # (str.split("in what movies did % appear"), title_by_actor),
-    (["bye"], bye_action),
+    # (str.split("what players scored goals between _ and _"), player_by_goal_range),
+    (["bye"], bye_action)
 ]
 
 
@@ -75,9 +68,6 @@ def search_pa_list(src: List[str]) -> List[str]:
 
 
 def query_loop() -> None:
-    """The simple query loop. The try/except structure is to catch Ctrl-C or Ctrl-D
-    characters and exit gracefully.
-    """
     print("Welcome to the EPL database!\n")
     while True:
         try:
@@ -91,9 +81,4 @@ def query_loop() -> None:
             break
 
     print("\nSo long!\n")
-
-
-# uncomment the following line once you've written all of your code and are ready to try
-# it out. Before running the following line, you should make sure that your code passes
-# the existing asserts.
 query_loop()
