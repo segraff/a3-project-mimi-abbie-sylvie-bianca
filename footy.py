@@ -34,10 +34,10 @@ def get_assists(footy: Tuple[str, str, int, int, int]) -> int:
 def players_by_team(matches: List[str]) -> List[str]:
     team = str(matches[0])
     result = []
-    print(f"Searching for players on team: {team}")  # Debug: print the team being searched
+    # print(f"Searching for players on team: {team}")  # Debug: print the team being searched
     for footy in footy_db:
         if get_team(footy) == team:
-            print(f"Found player: {get_player(footy)}")
+            # print(f"Found player: {get_player(footy)}")
             result.append(get_player(footy))
     return result
 
@@ -67,10 +67,10 @@ pa_list: List[Tuple[List[str], Callable[[List[str]], List[Any]]]] = [
 def search_pa_list(src: List[str]) -> List[str]:
     for pat, act in pa_list:
         val = match(pat, src)
-        print(f"Pattern: {pat}, Matched: {val}")  # Debug: print the pattern and matched values
+        # print(f"Pattern: {pat}, Matched: {val}")  # Debug: print the pattern and matched values
         if val is not None:
             team = " ".join(val)  # Ensure correct extraction of the team name
-            print(f"Extracted team: {team}")  # Debug: print extracted team
+            # print(f"Extracted team: {team}")  # Debug: print extracted team
             result = act(val)
             if result:
                 return result
