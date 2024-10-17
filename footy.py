@@ -20,17 +20,6 @@ def get_goals(footy: Tuple[str, str, int, int, int]) -> int:
 def get_assists(footy: Tuple[str, str, int, int, int]) -> int:
     return footy[4]
 
-
-
-# def players_by_team(matches: List[str]) -> List[str]:
-#     team = str(matches[0])
-#     result = []
-#     for footy in footy_db:
-#         print(footy)
-#         if get_team(footy) == team:
-#             print("match")
-#             # result.append(get_team(footy))
-#     return result
 def players_by_team(matches: List[str]) -> List[str]:
     team = str(matches[0])
     result = []
@@ -40,14 +29,6 @@ def players_by_team(matches: List[str]) -> List[str]:
             # print(f"Found player: {get_player(footy)}")
             result.append(get_player(footy))
     return result
-
-# def player_by_goal(matches: List[str]) -> List[str]:
-#     goal_start = int(matches[0])
-#     result = []
-#     for footy in footy_db:
-#         if(get_goals(footy) >= goal_start):
-#             result.append(get_player(footy))
-#     return result
 
 def player_by_goal(matches: List[str]) -> List[str]:
     goal_given = int(matches[0])
