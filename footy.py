@@ -50,12 +50,12 @@ def players_by_team(matches: List[str]) -> List[str]:
 #     return result
 
 def player_by_goal(matches: List[str]) -> List[str]:
-    goal_start = int(matches[0])
+    goal_given = int(matches[0])
     result = []
     for footy in footy_db:
-        if get_goals(footy) >= goal_start:
-            print(f"Player: {get_player(footy)}, Goals: {get_goals(footy)}")  # Debugging statement
+        if get_goals(footy) == goal_given:
             result.append(get_player(footy))
+            break
     return result
 
 # dummy argument is ignored and doesn't matter
@@ -67,7 +67,7 @@ def bye_action(dummy: List[str]) -> None:
 # pattern and action It must be declared here, after all of the function definitions
 pa_list: List[Tuple[List[str], Callable[[List[str]], List[Any]]]] = [
     (str.split("what players play on _"), players_by_team),
-    (str.split("what players scored goals over "), player_by_goal),
+    (str.split("what player scored _ goals"), player_by_goal),
     (["bye"], bye_action)
 ]
 
