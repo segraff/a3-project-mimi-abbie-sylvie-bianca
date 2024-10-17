@@ -41,12 +41,20 @@ def players_by_team(matches: List[str]) -> List[str]:
             result.append(get_player(footy))
     return result
 
-def player_by_goal_range(matches: List[str]) -> List[str]:
+# def player_by_goal(matches: List[str]) -> List[str]:
+#     goal_start = int(matches[0])
+#     result = []
+#     for footy in footy_db:
+#         if(get_goals(footy) >= goal_start):
+#             result.append(get_player(footy))
+#     return result
+
+def player_by_goal(matches: List[str]) -> List[str]:
     goal_start = int(matches[0])
-    goal_end = int(matches[1])
     result = []
     for footy in footy_db:
-        if(get_goals(footy) >= goal_start and get_year(footy) <= goal_end):
+        if get_goals(footy) >= goal_start:
+            print(f"Player: {get_player(footy)}, Goals: {get_goals(footy)}")  # Debugging statement
             result.append(get_player(footy))
     return result
 
@@ -59,7 +67,7 @@ def bye_action(dummy: List[str]) -> None:
 # pattern and action It must be declared here, after all of the function definitions
 pa_list: List[Tuple[List[str], Callable[[List[str]], List[Any]]]] = [
     (str.split("what players play on _"), players_by_team),
-    # (str.split("what players scored goals between _ and _"), player_by_goal_range),
+    (str.split("what players scored goals over "), player_by_goal),
     (["bye"], bye_action)
 ]
 
