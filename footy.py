@@ -52,6 +52,15 @@ def player_by_min(matches: List[str])-> List[str]:
             break
     return result
 
+def mins_by_player(matches: List[int])-> List[int]:
+    player_given = str(matches[0])
+    result = []
+    for footy in footy_db:
+        if get_player(footy) == player_given:
+            result.append(get_mins(footy))
+            break
+    return result
+
 
 
 # The pattern-action list for the natural language query system A list of tuples of
@@ -60,6 +69,7 @@ pa_list: List[Tuple[List[str], Callable[[List[str]], List[Any]]]] = [
     (str.split("what players play on _"), players_by_team),
     (str.split("what player scored _ goals"), player_by_goal),
     (str.split("what player played for _ minutes"), player_by_min),
+    (str.split("how many minutes did % play"), mins_by_player),
     (["bye"], bye_action)
 ]
 
