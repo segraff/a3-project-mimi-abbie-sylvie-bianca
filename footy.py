@@ -43,7 +43,6 @@ def player_by_goal(matches: List[str]) -> List[str]:
 def bye_action(dummy: List[str]) -> None:
     raise KeyboardInterrupt
 
-
 def player_by_min(matches: List[str])-> List[str]:
     mins_given = int(matches[0])
     result = []
@@ -52,6 +51,7 @@ def player_by_min(matches: List[str])-> List[str]:
             result.append(get_player(footy))
             break
     return result
+
 
 def mins_by_player(matches: List[int])-> List[int]:
     player_given = str(matches[0])
